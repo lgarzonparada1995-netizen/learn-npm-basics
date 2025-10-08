@@ -1,4 +1,4 @@
-# NPM - Notes
+# `NPM - Basics`
 
 ## Fundamentals
 1. installation and setup
@@ -100,3 +100,19 @@
 
     npm list -g --depth=0
     ```
+    - Installation flags
+        ```bash
+        # Install without saving to package.json
+        npm install --no-save <package-name>
+        
+        # Install exact version (no ^ or ~ )
+        npm install --save-exact <package-name>
+
+        # Install from Git repository
+        npm install  git+https://github.com/<USER-NAME>/<REPO-NAME>/repo.git
+
+        # Install from local folder
+        npm install ../path/to/local/folder
+        ``` 
+
+# Semantic Versioning
