@@ -20,14 +20,14 @@ By working through this repo, you’ll understand:
 
 ## 📚 Topics Covered
 
-1. **Introduction to npm**
+1. [**Fundamentals**](./learn-npm-basics/npm-basics.md/#fundamentals)
    - What is npm?
    - Installing Node.js and npm
    - Checking your npm version
 
-2. **Working with Packages**
-   - Installing local and global packages
-   - Removing and updating packages
+2. [**Package.json**](./learn-npm-basics/npm-basics.md/#package.json)
+   - Create a package.json
+   - Package.json structure
    - Using `npx`
 
 3. **Understanding `package.json`**
@@ -35,7 +35,18 @@ By working through this repo, you’ll understand:
    - Dependencies vs devDependencies
    - Semantic versioning (`^`, `~`, exact versions)
 
-4. **Useful Commands**
+4. [**Installing Packages**](./learn-npm-basics/npm-basics.md/#installing-packages)
+   - Installing dependencies
+   - Installing devDependencies
+   - Using `npm install -g`
+   - Installation flags
+
+5. [**Semantic Versioning**](./learn-npm-basics/npm-basics.md/#semantic-versioning)
+   - Understanding Semantic Versioning
+   - Using `^` and `~`
+   - Using exact versions
+   
+5. **Useful Commands**
    - `npm init` – Create a new project
    - `npm install` – Install all dependencies
    - `npm uninstall` – Remove packages
