@@ -66,7 +66,7 @@
         - dependencies: Packages needed in production
         - devDependencies: Packages needed only for development
 
-# Installing packages
+## Installing packages
 
 1. Installing dependencies
     ```bash
@@ -115,4 +115,59 @@
         npm install ../path/to/local/folder
         ``` 
 
-# Semantic Versioning
+## Semantic Versioning
+1. Understanding Semantic Versioning
+    Format `MAJOR.MINOR.PATCH`
+    - MAJOR: Breaking changes (incompatible API changes)
+    - MINOR: New features (backwards compatible)
+    - PATCH: Bug fixes (backwards compatible)
+2. Version Symbols
+    ```json
+    {
+    "dependencies": {
+        "express": "4.18.2",      // Exact version
+        "mongoose": "^6.0.0",     // Compatible with 6.x.x (most common)
+        "lodash": "~4.17.0",      // Compatible with 4.17.x
+        "axios": "*",             // Any version (not recommended)
+        "moment": ">=2.0.0",      // Greater than or equal
+        "chalk": "2.x",           // Any 2.x.x version
+        "dotenv": "latest"        // Latest version (risky)
+        }
+    }
+    ```
+3. Caret (^) vs Tilde (~)
+    - **caret(^):** Updates minor and patch versions
+        - `^1.2.3` Allows 1.2.4, 1.3.0, but not 2.0.0
+    - **tilde(~):** Updates only patch versions
+        - `~1.2.3` Allows 1.2.3, 1.2.4, but not 1.3.0
+
+## Package-lock.json
+1. Package-lock.json is a file that contains the exact versions of all the dependencies in your project.
+- It ensures:
+    - **Deterministic Installs:** Same dependency trees across all environments
+    - **Faster Installs:** Cached dependecy resolution
+    - **Security:** Locks down specific versions of dependencies including sub-dependencies
+
+```json
+{
+    "name": "my-project",
+    "version": "1.0.0",
+    "lockfileVersion": 3,
+    "dependencies": {
+        "express": {
+        "version": "4.18.2",
+        "resolved": "https://registry.npmjs.org/express/-/express-4.18.2.tgz",
+        "integrity": "sha512-...",
+        "requires": {
+            "body-parser": "1.20.1",
+            "cookie": "0.5.0"
+            }
+        }
+    }
+}
+```
+
+2. Best practices
+    - **Always commit** package-lock.json to version control
+    - Never edit manually
+    - If corrupted, delete and run ```npm install```
