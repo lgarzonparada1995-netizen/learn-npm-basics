@@ -171,3 +171,60 @@
     - **Always commit** package-lock.json to version control
     - Never edit manually
     - If corrupted, delete and run ```npm install```
+
+## NPM Scripts
+1. What are scripts?
+    - Scripts are command-line shorcuts that you define in your `package.json` file. They automate tasks and improve your workflow.
+    - Scripts can be run using the `npm <script-name>` command, or the `npm run <script-name>` command.
+
+2. Basic Scripts
+    ```json
+    {
+        "scripts": {
+            "start": "node server.js",
+            "dev": "nodemon server.js",
+            "test": "jest",
+            "build": "webpack"
+        }
+    }
+    ```
+    - `npm run start` will run the `start` script
+3. List of common scripts
+    - `start`: Run the application, production server
+    - `dev`: Run server with auto restart on changes (needs nodemon)
+    - `test`: Run all tests once
+    - `test:watch`: Run all tests and watch for changes
+    - `test:coverage`: Run all tests and generate coverage report
+    - `lint`: Check code for style/error issues
+    - `lint:fix`: Fix style/error issues
+    - `format`: Format code with Prettier
+    - `build`: Bundle the application for production
+    - `clean`: Delete generated files
+    - `docs`: Generate documentation
+    - `deploy`: Deploy the application to production
+4. chaining scripts
+    - Sequentian execution one after another, stops if one fails
+    ```json
+    {
+        "scripts": {
+            "clean": "rm -rf dist",
+            "build": "webpack",
+            "test": "jest",
+            "deploy": "npm run clean && npm run build && npm run test" 
+        }
+    }
+    ```
+5. Best practices for NPM scripts
+    - **Use descriptive names**: `build:prod` instead of `bd`
+    - **Document complex scripts**: add comments in README.md
+    - **Keep it simple**: Don't overcomplicate scripts
+    - **Avoid side effects**: Don't use scripts that modify files outside of the project
+    - **Use Conventions**: 
+        - `test` for tests
+        - `lint` for linting
+        - `build` for building
+        - `deploy` for deploying
+    - **Always commit package.json**. Scripts are part of your project's documentation
+
+## Managing Packages
+    
