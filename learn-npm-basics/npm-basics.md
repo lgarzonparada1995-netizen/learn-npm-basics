@@ -227,4 +227,29 @@
     - **Always commit package.json**. Scripts are part of your project's documentation
 
 ## Managing Packages
-    
+1. Updating Packages
+    - check for updates: `npm outdated`
+    - update a specific package: `npm update <package-name>`
+    - update all packages: `npm update`
+    - updating to latest (ignoring semver): `npm update <package-name>@latest`
+
+2. Uninstalling Packages
+    - uninstall a specific package: `npm uninstall <package-name>`
+    - uninstall all packages: `npm uninstall`
+    - Remove dev dependency: `npm uninstall -D <package-name>`
+    - Remove global dependency: `npm uninstall -g <package-name>`
+
+3. Viewing packages Info
+    - view package details: `npm view <package-name>`
+    - view package details with versions: `npm view <package-name> versions`
+    - view package in browser:
+        - `npm repo <package-name>`
+        - `npm docs <package-name>`
+
+4. Listing Packages
+    - view all installed packages: `npm list`
+    - view all installed packages with versions: `npm list --depth=0`
+    - view all installed packages with dependencies: `npm list --depth=0 --prod`
+    - List specific package: `npm list <package-name>`
+
+## NPM Cache 
