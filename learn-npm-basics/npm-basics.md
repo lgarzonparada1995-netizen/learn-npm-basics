@@ -782,6 +782,78 @@ Let's create a real package from scratch. We'll build a simple string utility li
 
 11. Semantic Versioning for Publishing
 
+    **Version Format**
+    - **0.1.0**: Initial release (development)
+    - **1.0.0**: First release (production, stable release)
+    - **1.1.0**: New Feature added
+    - **1.1.1**: Bug fix
+    - **2.0.0**: Major release (breaking change)
+
+    **NPM Version Commands**
+    ```bash
+    # Patch: Bug fixes (1.0.0 -> 1.0.1)
+    npm version patch
+
+    # Minor: New feature, backward compatible (1.0.0 -> 1.1.0)
+    npm version minor
+
+    # Major: Breaking change (1.0.0 -> 2.0.0)
+    npm version major
+
+    -----------------------------------------------------
+
+    # Pre-release versions
+    npm version prepatch # 1.0.0 -> 1.0.1-0
+    npm version preminor # 1.0.0 -> 1.1.0-0
+    npm version premajor # 1.0.0 -> 2.0.0-0
+
+    # Specific version
+    npm version 1.2.3
+    ```
+    **What `npm version` does**
+
+    1. Updates `package.json` with new version
+    2. Creates a git commit with message `v1.2.3`
+    3. Creates a git tag with name `v1.2.3`
+    
+    **Publishing a new version**
+    ```bash
+    # Make your changes
+    git add .
+    git commit -m "Add new feature"
+    
+    # Bump version (this commits automatically)
+    npm version minor
+
+    # Push to git with tags
+    git push --follow-tags
+
+    # Publish to npm
+    npm publish
+    ```
+
+12. Distribution tags
+
+    Tags let you publish different versions of the same package for different purposes.
+
+    **Create a beta version**
+    ```bash
+    # update version to include beta
+    npm version 2.0.0-beta.1
+
+    #Publish with beta tag
+    npm publish --tag beta
+    ```
+
+    **Users install beta version**
+    ```bash
+    npm install @yourusername/awesome-string-utils@beta
+    ```
+    **Common tags**
+    - `latest`: stable release (default)
+    - `next`: development version (release candidate, unstable)
+    - 
+
 
 
 
