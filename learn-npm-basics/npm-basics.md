@@ -253,3 +253,172 @@
     - List specific package: `npm list <package-name>`
 
 ## NPM Cache 
+1. Understanding NPM Cache
+    - NPM Cache stores downloaded packages in a local directory
+    - NPM Cache is used to speed up package installation and reduce network traffic
+    - View NPM Cache location: `npm config get cache`
+
+2. Cache Commands
+    ```bash
+    # Verify cache integrity
+    npm cache verify
+
+    # Clear cache
+    npm cache clean --force
+
+    # View cache content
+    npm cache list
+    ```
+
+## Security & Audit
+1. Understanding Security and Audit
+    - NPM has a built-in security audit feature that checks for vulnerabilities in installed packages
+    - Run audit: `npm audit`
+    - View audit report: `npm audit --json`
+
+2. Fixing Security Vulnerabilities
+    - Fix vulnerabilities: `npm audit fix`
+    - Fix with breaking chancges: `npm audit fix --force`
+
+3. Security best practices
+    ```bash
+    # Chek specific packages
+    npm vie <package-name> security
+
+    # Install only production dependencies
+    npm install --omit=dev
+
+    # Verify package integrity
+    npm install --integrity
+    ```
+
+## Publishing Packages
+1. Understanding Publishing
+    - NPM has a built-in publish feature that allows you to publish your packages to the registry
+    - why publish pakages?
+        - Share reusable code with other developers
+        - Use your own utilities across multiple projects
+        - Contribute to open source projects
+        - Build your portfolio
+        - Establish expertise in a domain
+
+2. Type of packages
+    1. **Public packages**: Anyone can insttall (free)
+    2. **Scoped packages**: Only users with access can install, namespace under your username (paid)
+    3. **Private packages**: Only you or your team  can install (requires paid NPM account)
+    4. **Organization packages**: Share within an organization (requires paid NPM account)
+
+3. Prereqisites before starting creating packages
+    1. <u>**Create an NPM account**</u>:
+        - https://www.npmjs.com/signup
+        - Choose a username and password
+        - Verify your email address 
+    2. <u>**Login via CLI**</u>:
+        ```bash
+        npm login
+        ```
+        You'll be prompted for :
+        - Username
+        - Password
+        - Email
+        - Two-factor authentication (if enabled)
+
+        Verify you're logged in:
+        ```bash
+        npm whoami
+        ```
+
+4. Preparing your package step by step
+Let's create a real package from scratch. We'll build a simple string utility library.
+    1. <u>Create project structured</u>
+        ```bash
+        mkdir awesome-string-utils
+        cd awesome-string-utils
+        npm init
+        ```
+    2. <u>Answer the prompts carefully</u>
+        ```markdown
+        package name: (awesome-string-utils)
+        @your-username/awesome-string-utils
+        version: (1.0.0)
+        description: Handy string manipulation utilities
+        entry point: (index.js)
+        test command: jest
+        git repository: (https://github.com/your-username/awesome-string-utils.git)
+        keywords: (string, utilities, manipulation, helpers, text)
+        author: (Your Name) <your@email.com>
+        license: (ISC) MIT
+        ```
+        why these choices matter:
+        - Name with scope `@your-username/` Always available, avoids naming conflicts
+        - description: First thing people see when searching NPM
+        - entry point: Main file of the package, that exports your functionality
+        - keywords: Help people find your package
+        - license: MIT License is most permissive and popular
+
+5. Complete package.json explained
+    - Here's and example of a complete professional package.json file:
+        ```json
+        {
+            "name": "@your-username/awesome-string-utils",
+            "version": "1.0.0",
+            "description": "Handy string manipulation utilities",
+            "main": "index.js",
+            "scripts": {
+                "test": "jest",
+                "test:watch": "jest --watch",
+                "test:coverage": "jest --coverage",
+                "lint": "eslint .",
+                "lint:fix": "eslint . --fix",
+                "format": "prettier --write ."
+                "prepublishOnly": "npm run lint && npm run format"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/your-username/awesome-string-utils.git"
+            },
+            "keywords": [
+                "string",
+                "utilities",
+                "manipulation",
+                "helpers",
+                "text"
+            ],
+            "author": "Your Name <your@email.com>",
+            "license": "MIT",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/your-username/awesome-string-utils.git"
+            },
+            "bugs": {
+                "url": "https://github.com/your-username/awesome-string-utils/issues"
+            },
+            "homepage": "https://github.com/your-username/awesome-string-utils#readme",
+            "engines": {
+                "node": ">=12",
+                "npm": ">=6"
+            },
+            "files": [
+                "index.js",
+                "lib/",
+                "README.md",
+                "LICENSE"
+            ],
+            "dependencies": {},
+            "devDependencies": {
+                "eslint": "^8.0.0",
+                "eslint-config-prettier": "^8.0.0",
+                "eslint-plugin-jest": "^27.0.0",
+                "eslint-plugin-prettier": "^4.0.0",
+                "jest": "^27.0.0",
+                "prettier": "^2.0.0"
+            }       
+        }
+        ```
+    - Line by line explanation:
+        - `name`: Package identifier (lowercase, no spaces)
+        - `version`: Semantic versioning (major.minor.patch)
+        - `description`: Shows up in search results - make it clear and consice
+        - `main`: Main file of the package, that exports your functionality. what gets loaded when someone requires your package
+        - `scripts`: Commands for running tests, linting, formatting, etc.
+        - `repository`: Link to your package on GitHub
